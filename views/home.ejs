@@ -1,0 +1,22 @@
+<%- include("partials/header") %>
+
+<%text_truncate = function(str, length, ending) {%>
+<%if (str.length > length) {%>
+<%return str.substring(0, length - ending.length) + ending;%>
+<%} else {%>
+<%return str;%>
+<%}%>
+<%};%>
+
+<h1>Home</h1>
+
+<p><%= startingContent %></p>
+
+<%newPost.forEach(function(post){%>
+<h1><%= post.title %></h1>
+<p><%= text_truncate(post.content, 100, " ...") %>
+    <a href="/posts/<%=post.title%>">Read More</a>
+</p>
+<%});%>
+
+<%- include("partials/footer") %>
